@@ -212,6 +212,9 @@ class ModelBasedAgent:
 
         # Memory-informed IF-THEN rules
         if percept.get('wall_ahead', False):
+             self.x += dx
+             self.y += dy
+             self.visited_cells.add((self.x, self.y))
             # If we turned left and still face a wall, continue turning to find an open heading
             if self.last_action == 'TurnLeft':
                 action = 'TurnLeft'
